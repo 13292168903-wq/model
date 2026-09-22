@@ -6,10 +6,10 @@ class LeNet(nn.Module):
     def __init__(self):
         super(LeNet, self).__init__()
         self.c1 = nn.Conv2d(1, 6, 5,padding=2)  #卷积核
-        self.sig = nn.Sigmoid()  #激活函数
-        self.s2 = nn.AvgPool2d(2,2)  #平均池化
+        self.sig = nn.ReLU()  #激活函数
+        self.s2 = nn.MaxPool2d(2,2)  #平均池化
         self.c3 = nn.Conv2d(6, 16, 5)
-        self.s4 = nn.AvgPool2d(2,2)
+        self.s4 = nn.MaxPool2d(2,2)
 
         self.flatten = nn.Flatten()
         self.fc1 = nn.Linear(16*5*5, 120)
