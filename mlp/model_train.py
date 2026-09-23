@@ -7,7 +7,7 @@ import torch
 import torch.nn as nn
 import pandas as pd
 import numpy as np
-from model import LeNet
+from model import MLP
 import matplotlib.pyplot as plt
 from plot import train_loader
 
@@ -107,8 +107,9 @@ def train_model_process(model,train_dataloader,val_dataloader):
             best_acc = val_acc_all[-1]
             best_model_wts = copy.deepcopy(model.state_dict())
         time_used = time.time() - since
+
         print("该轮训练用时：{:.0f}min{:.0f}s".format(time_used//60, time_used%60))
-        torch.save(best_model_wts,"./best_model.pth")
+        torch.save(best_model_wts,"./best_MLP_model.pth")
 
         ##用pandas保存数据
     train_process = pd.DataFrame({"epoch":range(1,num_epochs+1),
@@ -136,9 +137,9 @@ def maplot_acc_loss(train_process):
     plt.show()
 
 if __name__ == "__main__":
-    LeNet = LeNet()
+    MLP = MLP()
     train_loader,val_loader = train_val_data_process()
-    train_process = train_model_process(LeNet,train_loader,val_loader)
+    train_process = train_model_process(MLP,train_loader,val_loader)
     maplot_acc_loss(train_process)
 
 
