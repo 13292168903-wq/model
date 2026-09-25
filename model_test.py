@@ -4,14 +4,14 @@ from torchvision.datasets import FashionMNIST
 from model import LeNet
 from torch.utils.data import DataLoader,random_split
 
-def test_data_process():
+def test_data_process(batch_size=1):
     test_data = FashionMNIST(root='./data', train=False,
                               transform=transforms.Compose([transforms.Resize(28), transforms.ToTensor()]),
                               download=True)
     ##compose就是把后面的处理步骤按顺序组合起来 前面的resize就是调整尺寸 后面的好理解 就是转化成张量
 
 
-    test_dataloader = DataLoader(test_data, batch_size=1, shuffle=True,num_workers=0)  #初始化
+    test_dataloader = DataLoader(test_data, batch_size=batch_size, shuffle=False,num_workers=0)  #初始化
 
 
     return test_dataloader

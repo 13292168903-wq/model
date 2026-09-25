@@ -48,7 +48,7 @@ def train_model_process(model,train_dataloader,val_dataloader):
     since = time.time()  ##看一下每次训练的时间
 
     ##追踪训练过程
-    num_epochs = 20
+    num_epochs = 50
     for epoch in range(num_epochs):
         print("Epoch {}/{}".format(epoch+1,num_epochs))
         print("-"*10)
